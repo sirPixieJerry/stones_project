@@ -1,4 +1,6 @@
-// PLEASE CHANGE IF NECCESSARY -->
+// ----------------------------------------------------------------
+// REQUIRE DEPENDENCIES--------------------------------------------
+// ----------------------------------------------------------------
 
 // require express
 const express = require("express");
@@ -8,14 +10,6 @@ const compression = require("compression");
 const path = require("path");
 // require cookie-session
 const cookieSession = require("cookie-session");
-// require crypto random string
-const cryptoRandomString = require("crypto-random-string");
-// require multer
-const multer = require("multer");
-// require random string generator module (lookup!)
-const uidSafe = require("uid-safe");
-// // ---> require s3 file!
-// const { upload } = require("./s3");
 // require the secret
 const secret =
     process.env.NODE_ENV == "production"
@@ -24,10 +18,9 @@ const secret =
 // require db.js functions
 // const {} = require("../sql/db");
 
-// SETUP SOCKET.IO ❌
-// const { Server } = require("http");
-
-// SERVER SETUP:
+// ----------------------------------------------------------------
+// SETUP SERVER----------------------------------------------------
+// ----------------------------------------------------------------
 
 // start the server
 const app = express();
@@ -36,7 +29,11 @@ const app = express();
 // choose the port
 const PORT = process.env.PORT || 3001;
 
-// MIDDLEWARE SETUP
+// ----------------------------------------------------------------
+// SETUP MIDDLEWARE------------------------------------------------
+// ----------------------------------------------------------------
+
+// API-------------------------------------------------------------
 
 // setup to receive and parse JSON files
 app.use(express.json());
@@ -46,6 +43,9 @@ app.use(compression());
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 // setup middleware to populate req.body with form data
 app.use(express.urlencoded({ extended: false }));
+
+// SECURITY---------------------------------------------------------
+
 // setup cookie-session
 const session = cookieSession({
     name: "social-network-session",
@@ -59,36 +59,21 @@ app.use(function (req, res, next) {
     res.setHeader("x-frame-options", "deny");
     next();
 });
-// // setup multer uploader
-// const storage = multer.diskStorage({
-//     // specify directory folder for temp uploads
-//     destination: (req, file, callback) => {
-//         callback(null, path.join(__dirname, "uploads")); // null (if no err!)
-//     },
-//     // specify filename
-//     filename: (req, file, callback) => {
-//         // use uidSafe to generate filename ---> (24 digits)
-//         uidSafe(24).then((randomId) => {
-//             // build filename + ext from originalname property
-//             const fileName = `${randomId}${path.extname(file.originalname)}`; // null (if no err!)
-//             callback(null, fileName);
-//         });
-//     },
-// });
-// specify multer middleware ready to use!
-// const uploader = multer({ storage });
-// function to send code via email
-// function sendEmailWithCode({ email, code }) {
-//     console.log("[social:email] sending email with code", email, code);
-//     // here you'll put the SES stuff
-// }
 
-// always last!
+// ----------------------------------------------------------------
+// ROUTES----------------------------------------------------------
+// ----------------------------------------------------------------
+
+// main route
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
 });
 
-// server listening to chosen port --> change to server if using socket.io
+// ----------------------------------------------------------------
+// SERVER LISTEN---------------------------------------------------
+// ----------------------------------------------------------------
+
+// server listening to chosen port
 app.listen(PORT, function () {
     console.log(`I'm listening to ${PORT}...`);
 });

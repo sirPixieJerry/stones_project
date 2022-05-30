@@ -2,6 +2,8 @@
 
 an art project for a guerrilla performance in art galleries.
 
+NOTES during dev:
+
 security:
 "csurf"
 "cookie-session"

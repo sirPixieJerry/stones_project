@@ -28,6 +28,8 @@
         "@babel/polyfill": "^7.12.1",
         "@babel/preset-env": "^7.18.2",
         "@babel/preset-react": "^7.17.12",
+        "@react-three/drei": "^9.11.3",
+        "@react-three/fiber": "^8.0.19",
         "@redux-devtools/extension": "^3.2.2",
         "@testing-library/react": "^13.3.0",
         "@types/react-router-dom": "^5.3.3",
@@ -47,6 +49,7 @@
         "multer": "^1.4.4-lts.1",
         "nodemon": "^2.0.16",
         "react": "^18.1.0",
+        "react-color": "^2.19.3",
         "react-dom": "^18.1.0",
         "react-redux": "^8.0.2",
         "react-router": "^6.3.0",
@@ -67,6 +70,6 @@
         ]
     },
     "engines": {
-        "node": "14"
+        "node": "16"
     }
 }
