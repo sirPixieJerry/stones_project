@@ -1,7 +1,14 @@
+// ----------------------------------------------------------------
+// IMPORT DEPENDENCIES---------------------------------------------
+// ----------------------------------------------------------------
+
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import App from "./app";
-import "./css/start.css";
+
+// ----------------------------------------------------------------
+// SERVE APPS------------------------------------------------------
+// ----------------------------------------------------------------
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
