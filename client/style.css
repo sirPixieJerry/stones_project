@@ -41,6 +41,9 @@ body {
 .div1 {
     grid-column: 1 / 1;
     grid-row: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px dotted black;
 }
 
@@ -61,24 +64,59 @@ body {
 }
 
 .div4 {
-    grid-column: 1 / 3;
+    grid-column: 1 / 1;
     grid-row: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px dotted black;
+}
+
+.div5 {
+    grid-column: 2 / 2;
+    grid-row: 3 / 4;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
     border: 1px dotted black;
 }
 
 /* CANVAS ------------------------------------- */
 
+.canvas-frame {
+    width: 400px;
+    height: 210px;
+    overflow: hidden;
+}
+
+.canvas-frame canvas {
+    transform: translateY(-55px);
+}
+
 /* TOOLS -------------------------------------- */
 
-button img {
+.buttons {
+    margin-left: 40px;
+}
+
+.buttons img {
     height: 25px;
     width: 25px;
+}
+
+.div4 input {
+    margin-right: 25px;
+}
+
+.div5 button {
+    margin-right: 40px;
 }
 
 .brush-size-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 40px;
     width: 100px;
     height: 100px;
     border: 1px dotted black;
@@ -88,6 +126,10 @@ button img {
 .brush-size {
     background-color: #000000;
     border-radius: 50%;
+}
+
+.picker {
+    margin-left: 40px;
 }
 
 /* -------------------------------------------- 

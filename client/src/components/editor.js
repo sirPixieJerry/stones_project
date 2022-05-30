@@ -147,78 +147,71 @@ export default function Editor() {
     // RETURN JSX -------------------------------------------------
 
     return (
-        <>
-            <div>
-                <div className="container">
-                    <div className="div1">
-                        <canvas
-                            ref={canvasRef}
-                            onMouseDown={startPaint}
-                            onMouseUp={stopPaint}
-                            onMouseMove={paint}
-                        />
-                    </div>
-                    <div className="div2">
-                        <Canvas camera={{ position: [0, 1, 10], fov: 60 }}>
-                            <ambientLight intensity={0.1} />
-                            <Model
-                                canvasRef={canvasRef}
-                                position={[0, -1, -0.8]}
-                            />
-                            <Drei.BakeShadows />
-                            <Drei.Environment
-                                preset="city"
-                                environment="soft"
-                            />
-                            <Drei.OrbitControls
-                                autoRotate={false}
-                                enableZoom={false}
-                            />
-                        </Canvas>
-                    </div>
-                    <div className="div3">
-                        <CirclePicker onChange={handleChangeColor} />
-                        <div className="brush-size-container">
-                            <div
-                                className="brush-size"
-                                style={{
-                                    width: `${brushSize}px`,
-                                    height: `${brushSize}px`,
-                                }}
-                            ></div>
-                        </div>
-                    </div>
-                    <div className="div4">
-                        <input
-                            type="range"
-                            min="1"
-                            max="30"
-                            value={brushSize}
-                            onChange={(e) => setBrushSize(e.target.value)}
-                            step="1"
-                        />
-                        <button onClick={() => setUseColor("white")}>
-                            <img src="/images/rubber.png" alt=""></img>
-                        </button>
-                        <button>
-                            <img
-                                onClick={handleNew}
-                                src="/images/papers.png"
-                                alt=""
-                            ></img>
-                        </button>
-                        <button>
-                            <img
-                                onClick={handleFill}
-                                src="/images/paint-bucket.png"
-                                alt=""
-                            ></img>
-                        </button>
-                        <button>Submit</button>
-                        {/* <button onClick={safeImage}></button> */}
-                    </div>
+        <div className="container">
+            <div className="div1">
+                <div className="canvas-frame">
+                    <canvas
+                        ref={canvasRef}
+                        onMouseDown={startPaint}
+                        onMouseUp={stopPaint}
+                        onMouseMove={paint}
+                    />
                 </div>
             </div>
-        </>
+            <div className="div2">
+                <Canvas camera={{ position: [0, 1, 10], fov: 60 }}>
+                    <ambientLight intensity={0.1} />
+                    <Model canvasRef={canvasRef} position={[0, -1, -0.8]} />
+                    <Drei.BakeShadows />
+                    <Drei.Environment preset="city" environment="soft" />
+                    <Drei.OrbitControls autoRotate={false} enableZoom={false} />
+                </Canvas>
+            </div>
+            <div className="div3">
+                <CirclePicker className="picker" onChange={handleChangeColor} />
+                <div className="brush-size-container">
+                    <div
+                        className="brush-size"
+                        style={{
+                            width: `${brushSize}px`,
+                            height: `${brushSize}px`,
+                        }}
+                    ></div>
+                </div>
+            </div>
+            <div className="div4">
+                <div className="buttons">
+                    <button onClick={() => setUseColor("white")}>
+                        <img src="/images/rubber.png" alt=""></img>
+                    </button>
+                    <button>
+                        <img
+                            onClick={handleNew}
+                            src="/images/papers.png"
+                            alt=""
+                        ></img>
+                    </button>
+                    <button>
+                        <img
+                            onClick={handleFill}
+                            src="/images/paint-bucket.png"
+                            alt=""
+                        ></img>
+                    </button>
+                </div>
+                <input
+                    type="range"
+                    min="1"
+                    max="30"
+                    value={brushSize}
+                    onChange={(e) => setBrushSize(e.target.value)}
+                    step="1"
+                />
+            </div>
+            <div className="div5">
+                <button>Submit</button>
+                {/* <button onClick={safeImage}></button> */}
+            </div>
+        </div>
     );
 }
