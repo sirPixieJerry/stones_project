@@ -27,7 +27,7 @@ body {
    EDITOR.JS COMPONENT ------------------------
    -------------------------------------------- */
 
-/* GENERAL SETUP ------------------------------ */
+/* -->GENERAL SETUP --------------------------- */
 
 .container {
     width: 900px;
@@ -81,7 +81,7 @@ body {
     border: 1px dotted black;
 }
 
-/* CANVAS ------------------------------------- */
+/* -->CANVAS ---------------------------------- */
 
 .canvas-frame {
     width: 400px;
@@ -93,7 +93,7 @@ body {
     transform: translateY(-55px);
 }
 
-/* TOOLS -------------------------------------- */
+/* -->TOOLS ----------------------------------- */
 
 .buttons {
     margin-left: 40px;

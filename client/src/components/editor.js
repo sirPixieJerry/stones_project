@@ -2,11 +2,11 @@
 // IMPORT DEPENDENCIES---------------------------------------------
 // ----------------------------------------------------------------
 
-import React from "react"; // --> specify later!
-// import "./css/editor.css"; ---> solve later - see index html!
+import React from "react"; // --> specify later! 🚨
+// import "./css/editor.css"; ---> solve later - see index html! 🚨
 import * as Drei from "@react-three/drei";
-import { Canvas, useFrame } from "@react-three/fiber";
-// import { StoneModel } from "./components/stone_model";
+import { Canvas } from "@react-three/fiber";
+import StoneModel from "./stone_model";
 import { CirclePicker } from "react-color";
 // ----------------------------------------------------------------
 // EDITOR.JS COMPONENT---------------------------------------------
@@ -16,55 +16,6 @@ export default function Editor() {
     // ____________________________________________________________
     // SETUP-------------------------------------------------------
 
-    // ____________________________________________________________
-    // TEST!-------------------------------------------------------
-    function Model({ canvasRef, position }) {
-        // const [hovered, hover] = React.useState(false);
-        // const [grapped, grap] = React.useState(true);
-        const group = React.useRef();
-        const tex = React.useRef();
-        useFrame((state) => {
-            tex.current.needsUpdate = true;
-            const t = state.clock.getElapsedTime();
-            group.current.rotation.x = -Math.PI / 1.75 + Math.cos(t / 4) / 8;
-            group.current.rotation.y = Math.sin(t / 4) / 8;
-            group.current.rotation.z = (1 + Math.sin(t / 1.5)) / 20;
-            group.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
-        });
-        // document.body.onmousedown = () => grap(true);
-        // document.body.onmouseup = () => {
-        //     grap(false);
-        //     hover(false);
-        // };
-        const { nodes } = Drei.useGLTF("./models/rock.gltf", true);
-        return (
-            <group ref={group} dispose={null}>
-                <mesh
-                    name="Rock"
-                    geometry={nodes.Rock18.geometry}
-                    rotation={[-Math.PI / 2, 0, 0]}
-                    scale={2.7}
-                    position={position}
-                >
-                    <meshStandardMaterial
-                        attach="material"
-                        trasparent
-                        color="white"
-                        opacity={1}
-                    >
-                        <canvasTexture
-                            ref={tex}
-                            image={canvasRef.current}
-                            attach="map"
-                        />
-                    </meshStandardMaterial>
-                </mesh>
-            </group>
-        );
-    }
-    // ____________________________________________________________
-    // TEST!-------------------------------------------------------
-
     // STATES OF EDITOR.JS COMPONENT-------------------------------
     const [isPainting, setIsPainting] = React.useState(false);
     const [useColor, setUseColor] = React.useState("black");
@@ -73,6 +24,13 @@ export default function Editor() {
     // REFERENCES OF EDITOR.JS COMPONENT---------------------------
     const canvasRef = React.useRef(null);
     const contextRef = React.useRef(null);
+
+    // SETUP 3D MODEL----------------------------------------------
+    const positionStone = [0, -1, -0.8];
+    const colorMaterialStone = "white";
+    const rotationStone = [-Math.PI / 2, 0, 0];
+    const scaleStone = 2.7;
+    const wireframeMaterialStone = false;
 
     // ____________________________________________________________
     // CANVAS------------------------------------------------------
@@ -127,7 +85,7 @@ export default function Editor() {
     };
 
     // CHANGE COLOR BY COLORPICKER --------------------------------
-    const handleChangeColor = (color, evt) => {
+    const handleChangeColor = (color) => {
         setUseColor(color.hex);
     };
 
@@ -150,6 +108,7 @@ export default function Editor() {
         <div className="container">
             <div className="div1">
                 <div className="canvas-frame">
+                    {/* render the canvas element */}
                     <canvas
                         ref={canvasRef}
                         onMouseDown={startPaint}
@@ -159,15 +118,24 @@ export default function Editor() {
                 </div>
             </div>
             <div className="div2">
+                {/* render the stone */}
                 <Canvas camera={{ position: [0, 1, 10], fov: 60 }}>
                     <ambientLight intensity={0.1} />
-                    <Model canvasRef={canvasRef} position={[0, -1, -0.8]} />
+                    <StoneModel
+                        canvasRef={canvasRef}
+                        position={positionStone}
+                        colorMaterialStone={colorMaterialStone}
+                        rotationStone={rotationStone}
+                        scaleStone={scaleStone}
+                        wireframeMaterialStone={wireframeMaterialStone}
+                    />
                     <Drei.BakeShadows />
                     <Drei.Environment preset="city" environment="soft" />
                     <Drei.OrbitControls autoRotate={false} enableZoom={false} />
                 </Canvas>
             </div>
             <div className="div3">
+                {/* render the colorpicker and brush size */}
                 <CirclePicker className="picker" onChange={handleChangeColor} />
                 <div className="brush-size-container">
                     <div
@@ -180,6 +148,7 @@ export default function Editor() {
                 </div>
             </div>
             <div className="div4">
+                {/* render the tools buttons */}
                 <div className="buttons">
                     <button onClick={() => setUseColor("white")}>
                         <img src="/images/rubber.png" alt=""></img>
@@ -209,8 +178,8 @@ export default function Editor() {
                 />
             </div>
             <div className="div5">
+                {/* render submit button */}
                 <button>Submit</button>
-                {/* <button onClick={safeImage}></button> */}
             </div>
         </div>
     );
