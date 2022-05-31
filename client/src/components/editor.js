@@ -89,16 +89,21 @@ export default function Editor() {
         setUseColor(color.hex);
     };
 
-    // ERASE PAITING ----------------------------------------------
+    // ERASE PAINTING ---------------------------------------------
     const handleNew = () => {
         contextRef.current.fillStyle = "white";
         contextRef.current.fillRect(0, 0, canvasWidth, canvasHeight);
     };
 
-    // FILL PAITING -----------------------------------------------
+    // FILL PAINTING ----------------------------------------------
     const handleFill = () => {
         contextRef.current.fillStyle = useColor;
         contextRef.current.fillRect(0, 0, canvasWidth, canvasHeight);
+    };
+
+    // SUBMIT PAINTING --------------------------------------------
+    const submitCanvas = () => {
+        console.log("CANVAS", canvasRef.current.toDataURL());
     };
 
     // ____________________________________________________________
@@ -179,7 +184,7 @@ export default function Editor() {
             </div>
             <div className="div5">
                 {/* render submit button */}
-                <button>Submit</button>
+                <button onClick={submitCanvas}>Submit</button>
             </div>
         </div>
     );
