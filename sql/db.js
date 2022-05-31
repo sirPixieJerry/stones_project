@@ -8,19 +8,21 @@ const spicedPg = require("spiced-pg");
 // INITIALISE DATABASE---------------------------------------------
 // ----------------------------------------------------------------
 
-// require credentials from config.json
+// INITIALISE ACCESS-----------------------------------------------
+
 const { DB_USER, DB_PASSWORD, DB_NAME } = require("../config.json");
 
-// decide if db runs in production or development
+// SELECT ENVIROMENT-----------------------------------------------
+
 let db;
+
 if (process.env.DATABASE_URL) {
-    // production
-    db = spicedPg(process.env.DATABASE_URL);
+    db = spicedPg(process.env.DATABASE_URL); // production
 } else {
-    // development
     db = spicedPg(
         `postgres:${DB_USER}:${DB_PASSWORD}@localhost:5432/${DB_NAME}`
-    );
+    ); // development
+
     console.log(`[db] Connecting to: ${DB_NAME}`);
 }
 
@@ -28,6 +30,29 @@ if (process.env.DATABASE_URL) {
 // QUERIES---------------------------------------------------------
 // ----------------------------------------------------------------
 
+// ________________________________________________________________
+// SELECT QUERIES--------------------------------------------------
+
+// TEXTURE_DATA FROM TEXTURE_DATA----------------------------------
+// --> specify later for user_id 🚨
+function loadTexture() {
+    console.log("REQ AT DB!");
+    return db
+        .query(`SELECT * FROM texture_data`, [])
+        .then((result) => {
+            console.log("DB QUERY:", result.rows);
+            return result.rows[0];
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
+
+// ________________________________________________________________
+// INSERT QUERIES--------------------------------------------------
+
+// INSERT TEXTURE_DATA TO TEXTURE_DATA-----------------------------
+// --> specify later for user_id 🚨
 function saveTexture(data) {
     return db
         .query(
@@ -42,17 +67,7 @@ function saveTexture(data) {
         });
 }
 
-function loadTexture() {
-    console.log("REQ AT DB!");
-    return db
-        .query(`SELECT * FROM texture_data`, [])
-        .then((result) => {
-            console.log("DB QUERY:", result.rows);
-            return result.rows[0];
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-}
+// ________________________________________________________________
+// EXPORT----------------------------------------------------------
 
 module.exports = { saveTexture, loadTexture };

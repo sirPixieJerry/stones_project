@@ -19,6 +19,16 @@ export default function DetailStone() {
     // STATES OF DETAIL_VIEW_STONE.JS COMPONENT--------------------
     const [texture, setTexture] = React.useState(false);
 
+    // SETUP 3D MODEL----------------------------------------------
+
+    const positionStone = [0, 1, 0];
+    const colorMaterialStone = "white";
+    const rotationStone = [3, 3, 0]; // -Math.PI / 2, 0, 0
+    const scaleStone = 2.7;
+    const wireframeMaterialStone = false;
+    const editmode = false;
+    const textureStone = texture;
+
     // LOAD BASE64 FROM DB-----------------------------------------
     React.useEffect(() => {
         console.log("REQ TO SERVER!");
@@ -30,16 +40,6 @@ export default function DetailStone() {
                 setTexture(texture_data);
             });
     }, []);
-
-    // SETUP 3D MODEL----------------------------------------------
-
-    const positionStone = [0, 1, 0];
-    const colorMaterialStone = "white";
-    const rotationStone = [3, 3, 0]; // -Math.PI / 2, 0, 0
-    const scaleStone = 2.7;
-    const wireframeMaterialStone = false;
-    const editmode = false;
-    const textureStone = texture;
 
     // ____________________________________________________________
     // RETURN JSX -------------------------------------------------

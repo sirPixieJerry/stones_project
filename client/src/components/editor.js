@@ -20,7 +20,7 @@ export default function Editor() {
     const [isPainting, setIsPainting] = React.useState(false);
     const [useColor, setUseColor] = React.useState("black");
     const [brushSize, setBrushSize] = React.useState(5);
-    const [error, setError] = React.useState(false);
+    const [error, setError] = React.useState(false); // --> spetup later! 🚨
 
     // REFERENCES OF EDITOR.JS COMPONENT---------------------------
     const canvasRef = React.useRef(null);
@@ -38,11 +38,11 @@ export default function Editor() {
     // ____________________________________________________________
     // CANVAS------------------------------------------------------
 
-    // PROPERTIES OF CANVAS ELEMENT -------------------------------
+    // SETUP CANVAS------------------------------------------------
     const canvasWidth = 400;
     const canvasHeight = 300;
 
-    // INITIALISE CANVAS ------------------------------------------
+    // INITIALISE CANVAS-------------------------------------------
     React.useLayoutEffect(() => {
         const canvas = canvasRef.current;
         canvas.width = canvasWidth;
@@ -53,9 +53,9 @@ export default function Editor() {
         contextRef.current = context; // store ctx to contextRef
     }, []);
 
-    // CANVAS CONTROLS --------------------------------------------
+    // CANVAS CONTROLS---------------------------------------------
 
-    // PAINT FUNCTIONALITY ----------------------------------------
+    // PAINT FUNCTIONALITY-----------------------------------------
     const startPaint = ({ nativeEvent }) => {
         // use nativeEvent to track mouse movement
         const { offsetX, offsetY } = nativeEvent;
@@ -87,24 +87,24 @@ export default function Editor() {
         contextRef.current.stroke();
     };
 
-    // CHANGE COLOR BY COLORPICKER --------------------------------
+    // CHANGE COLOR BY COLORPICKER---------------------------------
     const handleChangeColor = (color) => {
         setUseColor(color.hex);
     };
 
-    // ERASE PAINTING ---------------------------------------------
+    // ERASE PAINTING----------------------------------------------
     const handleNew = () => {
         contextRef.current.fillStyle = "white";
         contextRef.current.fillRect(0, 0, canvasWidth, canvasHeight);
     };
 
-    // FILL PAINTING ----------------------------------------------
+    // FILL PAINTING-----------------------------------------------
     const handleFill = () => {
         contextRef.current.fillStyle = useColor;
         contextRef.current.fillRect(0, 0, canvasWidth, canvasHeight);
     };
 
-    // SUBMIT PAINTING --------------------------------------------
+    // SUBMIT PAINTING---------------------------------------------
     const submitCanvas = (evt) => {
         evt.preventDefault();
         const data = canvasRef.current.toDataURL();
@@ -125,7 +125,7 @@ export default function Editor() {
     };
 
     // ____________________________________________________________
-    // RETURN JSX -------------------------------------------------
+    // RETURN JSX--------------------------------------------------
 
     return (
         <div className="container">

@@ -2,51 +2,46 @@
 // REQUIRE DEPENDENCIES--------------------------------------------
 // ----------------------------------------------------------------
 
-// require express
 const express = require("express");
-// require compression
 const compression = require("compression");
-// require path
 const path = require("path");
-// require cookie-session
 const cookieSession = require("cookie-session");
-// require the secret
 const secret =
     process.env.NODE_ENV == "production"
         ? process.env
         : require("../config.json");
-// require db.js functions
+
+// IMPORT QUERIES--------------------------------------------------
 const { saveTexture, loadTexture } = require("../sql/db");
 
 // ----------------------------------------------------------------
 // SETUP SERVER----------------------------------------------------
 // ----------------------------------------------------------------
 
-// start the server
-const app = express();
-// socket.io implementation
-// const server = Server(app);
-// choose the port
-const PORT = process.env.PORT || 3001;
+const app = express(); // start the server
+
+const PORT = process.env.PORT || 3001; // choose port
 
 // ----------------------------------------------------------------
 // SETUP MIDDLEWARE------------------------------------------------
 // ----------------------------------------------------------------
 
+// ________________________________________________________________
 // API-------------------------------------------------------------
 
-// setup to receive and parse JSON files
+// setup parse JSON
 app.use(express.json());
-// compresses th response
+// compress response
 app.use(compression());
-// serve static files in /public
+// serve static files
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
-// setup middleware to populate req.body with form data
+// populate req.body
 app.use(express.urlencoded({ extended: false }));
 
-// SECURITY---------------------------------------------------------
+// ________________________________________________________________
+// SECURITY--------------------------------------------------------
 
-// setup cookie-session
+// SESSION COOKIE--------------------------------------------------
 const session = cookieSession({
     name: "social-network-session",
     secret: secret.SECRET,
@@ -54,7 +49,8 @@ const session = cookieSession({
     sameSite: true,
 });
 app.use(session);
-// Prevent Framing
+
+// PREVENT FRAMING-------------------------------------------------
 app.use(function (req, res, next) {
     res.setHeader("x-frame-options", "deny");
     next();
