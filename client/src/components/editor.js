@@ -106,19 +106,19 @@ export default function Editor() {
     // SUBMIT PAINTING --------------------------------------------
     const submitCanvas = (evt) => {
         evt.preventDefault();
-        console.log("CANVAS SEND TO SERVER:", canvasRef.current.toDataURL());
         const data = canvasRef.current.toDataURL();
         fetch("/api/submit/canvas", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
+            body: JSON.stringify({ data }),
         })
             .then((res) => res.json())
             .then((result) => {
                 if (!result.success) {
                     setError(true);
                 } else {
-                    location.replace();
+                    console.log("REDIRECT!");
+                    // location.replace();
                 }
             });
     };

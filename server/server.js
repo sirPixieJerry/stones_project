@@ -77,10 +77,14 @@ app.get("*", function (req, res) {
 
 // POST CANVAS DATA------------------------------------------------
 app.post("/api/submit/canvas", (req, res) => {
-    console.log("DATA AT SERVER:", req.body.data);
-    const texture = req.body.data;
-    saveTexture(texture)
-        .then((rows) => res.json({ success: true }))
+    saveTexture(req.body.data)
+        .then((rows) => {
+            if (rows.length > 0) {
+                res.json({ success: true });
+            } else {
+                res.json({ success: false });
+            }
+        })
         .catch((err) => {
             res.status(400);
             return err;

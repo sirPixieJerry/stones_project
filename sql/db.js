@@ -28,8 +28,7 @@ if (process.env.DATABASE_URL) {
 // QUERIES---------------------------------------------------------
 // ----------------------------------------------------------------
 
-function saveTexture({ data }) {
-    console.log("REQ AT SERVER!", data);
+function saveTexture(data) {
     return db
         .query(
             `INSERT INTO texture_data (texture_data)
@@ -37,11 +36,10 @@ function saveTexture({ data }) {
     RETURNING *`,
             [data]
         )
-        .then((result) => {
-            console.log("RETURNING TO SERVER!");
-            return result.rows[0];
-        })
+        .then((result) => result.rows[0])
         .catch((err) => {
             console.log(err);
         });
 }
+
+module.exports = { saveTexture };
