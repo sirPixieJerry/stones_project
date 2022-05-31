@@ -133,6 +133,7 @@ export default function Editor() {
                         rotationStone={rotationStone}
                         scaleStone={scaleStone}
                         wireframeMaterialStone={wireframeMaterialStone}
+                        editmode={true}
                     />
                     <Drei.BakeShadows />
                     <Drei.Environment preset="city" environment="soft" />

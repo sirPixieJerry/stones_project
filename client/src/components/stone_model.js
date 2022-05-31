@@ -18,21 +18,28 @@ export default function StoneModel({
     rotationStone,
     scaleStone,
     wireframeMaterialStone,
+    editmode,
 }) {
-    // MOVE THIS PART TO EDITOR 🚨
-    // ASK TEACHERS HOW TO FORWARD REFS FROM CHILD TO PARENT!
+    // SETUP EDIT MODE ------------------------------------------------
     const group = React.useRef();
     const tex = React.useRef();
-    useFrame((state) => {
-        tex.current.needsUpdate = true;
-        const t = state.clock.getElapsedTime();
-        group.current.rotation.x = -Math.PI / 1.75 + Math.cos(t / 4) / 8;
-        group.current.rotation.y = Math.sin(t / 4) / 8;
-        group.current.rotation.z = (1 + Math.sin(t / 1.5)) / 20;
-        group.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
-    });
+    if (editmode) {
+        useFrame((state) => {
+            tex.current.needsUpdate = true;
+            const t = state.clock.getElapsedTime();
+            group.current.rotation.x = -Math.PI / 1.75 + Math.cos(t / 4) / 8;
+            group.current.rotation.y = Math.sin(t / 4) / 8;
+            group.current.rotation.z = (1 + Math.sin(t / 1.5)) / 20;
+            group.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
+        });
+    }
+
+    // RENDER MODEL----------------------------------------------------
+
     // use helper from @react-three/drei to load gltf 3d model
     const { nodes } = useGLTF("./models/rock.gltf");
+
+    // render 3d model
     return (
         <group ref={group} dispose={null}>
             <mesh
