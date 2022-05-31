@@ -1,11 +1,12 @@
 -- PLEASE CHANGE IF NECCESSARY -->
 
 -- drop existing table
-DROP TABLE IF EXISTS password_reset;
-DROP TABLE IF EXISTS chat_messages;
+-- create user password reset:
 DROP TABLE IF EXISTS texture_data;
+DROP TABLE IF EXISTS password_reset;
+DROP TABLE IF EXISTS users;
 
--- create user table:
+-- create user_table:
 CREATE TABLE users (
      id SERIAL PRIMARY KEY,
      first_name VARCHAR(255) NOT NULL,
@@ -15,7 +16,8 @@ CREATE TABLE users (
      password_hash VARCHAR NOT NULL,
      created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
--- create user password reset:
+
+-- create user password_reset:
 CREATE TABLE password_reset (
      id SERIAL PRIMARY KEY,
      code VARCHAR(6) NOT NULL,
@@ -23,7 +25,9 @@ CREATE TABLE password_reset (
      created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- create texture_data:
 CREATE TABLE texture_data (
      id SERIAL PRIMARY KEY,
-     texture_data TEXT
+     texture_data TEXT,
+     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
