@@ -16,7 +16,7 @@ const secret =
         ? process.env
         : require("../config.json");
 // require db.js functions
-// const {} = require("../sql/db");
+const { saveTexture } = require("../sql/db");
 
 // ----------------------------------------------------------------
 // SETUP SERVER----------------------------------------------------
@@ -64,9 +64,27 @@ app.use(function (req, res, next) {
 // ROUTES----------------------------------------------------------
 // ----------------------------------------------------------------
 
-// main route
+// ________________________________________________________________
+// GET ROUTES------------------------------------------------------
+
+// GET CATCH ALL ROUTES--------------------------------------------
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
+});
+
+// ________________________________________________________________
+// POST ROUTES-----------------------------------------------------
+
+// POST CANVAS DATA------------------------------------------------
+app.post("/api/submit/canvas", (req, res) => {
+    console.log("DATA AT SERVER:", req.body.data);
+    const texture = req.body.data;
+    saveTexture(texture)
+        .then((rows) => res.json({ success: true }))
+        .catch((err) => {
+            res.status(400);
+            return err;
+        });
 });
 
 // ----------------------------------------------------------------

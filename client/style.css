@@ -19,6 +19,15 @@ body {
     justify-content: center;
 }
 
+.container {
+    width: 900px;
+    height: 480px;
+    background-color: grey;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    grid-template-rows: 300px 1fr 65px;
+}
+
 /* -------------------------------------------- 
    START.JS COMPONENT -------------------------
    -------------------------------------------- */
@@ -28,15 +37,6 @@ body {
    -------------------------------------------- */
 
 /* -->GENERAL SETUP --------------------------- */
-
-.container {
-    width: 900px;
-    height: 480px;
-    background-color: grey;
-    display: grid;
-    grid-template-columns: 1fr 420px;
-    grid-template-rows: 300px 1fr 65px;
-}
 
 .div1 {
     grid-column: 1 / 1;
@@ -135,3 +135,14 @@ body {
 /* -------------------------------------------- 
    APP.JS COMPONENT ---------------------------
    -------------------------------------------- */
+
+/* -------------------------------------------- 
+   DETAIL_VIEW_STONE.JS COMPONENT -------------
+   -------------------------------------------- */
+
+.div6 {
+    grid-column: 1 / 3;
+    grid-row: 1 / 4;
+    background-color: tomato;
+    border: 1px dotted black;
+}

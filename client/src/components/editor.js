@@ -20,6 +20,7 @@ export default function Editor() {
     const [isPainting, setIsPainting] = React.useState(false);
     const [useColor, setUseColor] = React.useState("black");
     const [brushSize, setBrushSize] = React.useState(5);
+    const [error, setError] = React.useState(false);
 
     // REFERENCES OF EDITOR.JS COMPONENT---------------------------
     const canvasRef = React.useRef(null);
@@ -31,6 +32,7 @@ export default function Editor() {
     const rotationStone = [-Math.PI / 2, 0, 0];
     const scaleStone = 2.7;
     const wireframeMaterialStone = false;
+    const editmode = true;
 
     // ____________________________________________________________
     // CANVAS------------------------------------------------------
@@ -102,8 +104,23 @@ export default function Editor() {
     };
 
     // SUBMIT PAINTING --------------------------------------------
-    const submitCanvas = () => {
-        console.log("CANVAS", canvasRef.current.toDataURL());
+    const submitCanvas = (evt) => {
+        evt.preventDefault();
+        console.log("CANVAS SEND TO SERVER:", canvasRef.current.toDataURL());
+        const data = canvasRef.current.toDataURL();
+        fetch("/api/submit/canvas", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                if (!result.success) {
+                    setError(true);
+                } else {
+                    location.replace();
+                }
+            });
     };
 
     // ____________________________________________________________
@@ -133,7 +150,7 @@ export default function Editor() {
                         rotationStone={rotationStone}
                         scaleStone={scaleStone}
                         wireframeMaterialStone={wireframeMaterialStone}
-                        editmode={true}
+                        editmode={editmode}
                     />
                     <Drei.BakeShadows />
                     <Drei.Environment preset="city" environment="soft" />
