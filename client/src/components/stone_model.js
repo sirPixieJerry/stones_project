@@ -4,8 +4,9 @@
 
 import React from "react"; // --> specify later! 🚨
 // import "./css/app.css"; ---> solve later - see index html! 🚨
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
+import { TextureLoader } from "three/src/loaders/TextureLoader";
 
 // ----------------------------------------------------------------
 // STONE_MODEL.JS COMPONENT----------------------------------------
@@ -19,8 +20,12 @@ export default function StoneModel({
     scaleStone,
     wireframeMaterialStone,
     editmode,
+    textureStone,
 }) {
-    // SETUP EDIT MODE ------------------------------------------------
+    // ____________________________________________________________
+    // SETUP-------------------------------------------------------
+
+    // SETUP FOR EDITOR.JS-----------------------------------------
     const group = React.useRef();
     const tex = React.useRef();
     if (editmode) {
@@ -34,7 +39,13 @@ export default function StoneModel({
         });
     }
 
-    // RENDER MODEL----------------------------------------------------
+    // SETUP FOR DETAIL_VIEW_STONE.JS------------------------------
+
+    const texPng = textureStone
+        ? useLoader(TextureLoader, textureStone)
+        : false;
+
+    // RENDER MODEL------------------------------------------------
 
     // use helper from @react-three/drei to load gltf 3d model
     const { nodes } = useGLTF("./models/rock.gltf");
@@ -51,15 +62,19 @@ export default function StoneModel({
                 <meshStandardMaterial
                     attach="material"
                     trasparent
+                    map={texPng}
                     wireframe={wireframeMaterialStone} // wireframe -> e.g. true
                     color={colorMaterialStone} // material color -> white
                     opacity={1}
                 >
-                    <canvasTexture
-                        ref={tex} // reference texture
-                        image={canvasRef.current} // reference texture -> e.g. canvas
-                        attach="map"
-                    />
+                    {/* use canvasTexture in editmode */}
+                    {editmode && (
+                        <canvasTexture
+                            ref={tex} // reference texture
+                            image={canvasRef.current} // reference texture -> e.g. canvas
+                            attach="map"
+                        />
+                    )}
                 </meshStandardMaterial>
             </mesh>
         </group>

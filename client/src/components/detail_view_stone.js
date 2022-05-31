@@ -21,7 +21,8 @@ export default function DetailStone() {
 
     // LOAD BASE64 FROM DB-----------------------------------------
     React.useEffect(() => {
-        fetch("api/loadtexture")
+        console.log("REQ TO SERVER!");
+        fetch("/api/load/texture")
             .then((res) => res.json())
             .then((data) => {
                 console.log("DATA CLIENT:", data);
@@ -34,11 +35,11 @@ export default function DetailStone() {
 
     const positionStone = [0, 1, 0];
     const colorMaterialStone = "white";
-    const rotationStone = [-Math.PI / 2, 0, 0];
+    const rotationStone = [3, 3, 0]; // -Math.PI / 2, 0, 0
     const scaleStone = 2.7;
     const wireframeMaterialStone = false;
     const editmode = false;
-    const textureStone = texture; // <-- FILL IN TEXTURE FROM DB
+    const textureStone = texture;
 
     // ____________________________________________________________
     // RETURN JSX -------------------------------------------------
@@ -46,17 +47,26 @@ export default function DetailStone() {
     return (
         <div className="container">
             <div className="div6">
-                <Canvas camera={{ position: [0, 1, 10], fov: 60 }}>
-                    <ambientLight intensity={0.1} />
-                    <StoneModel
-                        position={positionStone}
-                        colorMaterialStone={colorMaterialStone}
-                        rotationStone={rotationStone}
-                        scaleStone={scaleStone}
-                        wireframeMaterialStone={wireframeMaterialStone}
-                        editmode={editmode}
-                    />
-                </Canvas>
+                {texture && (
+                    <Canvas camera={{ position: [0, 1, 10], fov: 60 }}>
+                        <ambientLight intensity={0.1} />
+                        <StoneModel
+                            position={positionStone}
+                            colorMaterialStone={colorMaterialStone}
+                            rotationStone={rotationStone}
+                            scaleStone={scaleStone}
+                            wireframeMaterialStone={wireframeMaterialStone}
+                            editmode={editmode}
+                            textureStone={textureStone}
+                        />
+                        <Drei.BakeShadows />
+                        <Drei.Environment preset="city" environment="soft" />
+                        <Drei.OrbitControls
+                            autoRotate={false}
+                            enableZoom={false}
+                        />
+                    </Canvas>
+                )}
             </div>
         </div>
     );

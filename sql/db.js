@@ -42,4 +42,17 @@ function saveTexture(data) {
         });
 }
 
-module.exports = { saveTexture };
+function loadTexture() {
+    console.log("REQ AT DB!");
+    return db
+        .query(`SELECT * FROM texture_data`, [])
+        .then((result) => {
+            console.log("DB QUERY:", result.rows);
+            return result.rows[0];
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
+
+module.exports = { saveTexture, loadTexture };

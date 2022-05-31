@@ -16,7 +16,7 @@ const secret =
         ? process.env
         : require("../config.json");
 // require db.js functions
-const { saveTexture } = require("../sql/db");
+const { saveTexture, loadTexture } = require("../sql/db");
 
 // ----------------------------------------------------------------
 // SETUP SERVER----------------------------------------------------
@@ -66,6 +66,20 @@ app.use(function (req, res, next) {
 
 // ________________________________________________________________
 // GET ROUTES------------------------------------------------------
+
+// GET SAVED TEXTURE FROM DB---------------------------------------
+app.get("/api/load/texture", (req, res) => {
+    console.log("REQ FROM APP");
+    loadTexture()
+        .then((rows) => {
+            console.log("ANSWER DB:", rows);
+            return res.json(rows);
+        })
+        .catch((err) => {
+            res.status(400);
+            return err;
+        });
+});
 
 // GET CATCH ALL ROUTES--------------------------------------------
 app.get("*", function (req, res) {

@@ -33,6 +33,7 @@ export default function Editor() {
     const scaleStone = 2.7;
     const wireframeMaterialStone = false;
     const editmode = true;
+    const textureStone = false;
 
     // ____________________________________________________________
     // CANVAS------------------------------------------------------
@@ -151,6 +152,7 @@ export default function Editor() {
                         scaleStone={scaleStone}
                         wireframeMaterialStone={wireframeMaterialStone}
                         editmode={editmode}
+                        textureStone={textureStone}
                     />
                     <Drei.BakeShadows />
                     <Drei.Environment preset="city" environment="soft" />
