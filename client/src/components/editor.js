@@ -9,6 +9,7 @@ import * as Drei from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import StoneModel from "./stone_model";
 import { CirclePicker } from "react-color";
+
 // ----------------------------------------------------------------
 // EDITOR.JS COMPONENT---------------------------------------------
 // ----------------------------------------------------------------
