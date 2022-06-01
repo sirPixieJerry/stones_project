@@ -17,11 +17,11 @@ export default function Welcome() {
     // SETUP-------------------------------------------------------
 
     // SETUP 3D MODEL----------------------------------------------
-    const positionStone = [0, -1, -0.8];
-    const colorMaterialStone = "lightgray";
-    const rotationStone = [-Math.PI / 2, 0, 3];
-    const scaleStone = 4.8;
-    const wireframeMaterialStone = true;
+    const positionStone = [0, -1, -3];
+    const colorMaterialStone = "white";
+    const rotationStone = [-Math.PI / 2, 0, 1.6];
+    const scaleStone = 5.7;
+    const wireframeMaterialStone = false;
     const editmode = false;
     const textureStone = false;
 
@@ -30,13 +30,8 @@ export default function Welcome() {
     return (
         <div className="container">
             <div className="div7">
-                <div className="welcome">
-                    <h3>{`"We can choose to throw stones, to stumble on them, to climb over them, or to build with them."`}</h3>
-                    <p>{`(William Arthur Ward)`}</p>
-                </div>
-
-                <div>
-                    <Canvas camera={{ position: [0, 1, 10], fov: 60 }}>
+                <div className="start-stone">
+                    <Canvas camera={{ position: [0, 6, 10], fov: 60 }}>
                         <ambientLight intensity={0.1} />
                         <StoneModel
                             canvasRef={false}
@@ -48,11 +43,25 @@ export default function Welcome() {
                             editmode={editmode}
                             textureStone={textureStone}
                         />
+                        <Drei.ContactShadows
+                            opacity={0.7}
+                            scale={10}
+                            blur={1}
+                            far={17}
+                            resolution={256}
+                            color="#000000"
+                        />
                         <Drei.BakeShadows />
                         <Drei.Environment preset="city" environment="soft" />
                     </Canvas>
                 </div>
-                <button className="start">Start</button>
+                <div className="welcome">
+                    <h3>{`"We can choose to throw stones, to stumble on them, to climb over them, or to build with them."`}</h3>
+                    <p>{`(William Arthur Ward)`}</p>
+                </div>
+                <Link to="/editor">
+                    <button className="start">Claim Stone</button>
+                </Link>
             </div>
         </div>
     );

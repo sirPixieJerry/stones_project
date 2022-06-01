@@ -21,7 +21,7 @@ export default function Editor() {
     // STATES OF EDITOR.JS COMPONENT-------------------------------
     const [isPainting, setIsPainting] = React.useState(false);
     const [useColor, setUseColor] = React.useState("black");
-    const [brushSize, setBrushSize] = React.useState(5);
+    const [brushSize, setBrushSize] = React.useState(16);
     const [error, setError] = React.useState(false); // --> setup later! 🚨
 
     // REFERENCES OF EDITOR.JS COMPONENT---------------------------

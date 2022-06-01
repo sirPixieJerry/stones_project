@@ -68,6 +68,18 @@ export default function DetailStone() {
                     </Canvas>
                 )}
             </div>
+            <div className="div8">
+                <h3>Special Thanks To:</h3>
+                <p>David Friedman</p>
+                <p>Johannes Kronmüller</p>
+                <p>Diego Caponera</p>
+                <p>Merle Fischer</p>
+                <p>Peter Anderson</p>
+                <p>Oliver Sieweke</p>
+                <p>Alistair Quinn</p>
+                <p>Andres Arias</p>
+                <p>SPICED ACADEMY</p>
+            </div>
         </div>
     );
 }
