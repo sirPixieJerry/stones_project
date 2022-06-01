@@ -65,10 +65,10 @@ app.use(function (req, res, next) {
 
 // GET SAVED TEXTURE FROM DB---------------------------------------
 app.get("/api/load/texture", (req, res) => {
-    console.log("REQ FROM APP");
+    // console.log("REQ FROM APP");
     loadTexture()
         .then((rows) => {
-            console.log("ANSWER DB:", rows);
+            // console.log("ANSWER DB:", rows);
             return res.json(rows);
         })
         .catch((err) => {
@@ -88,8 +88,8 @@ app.get("*", function (req, res) {
 // POST CANVAS DATA------------------------------------------------
 app.post("/api/submit/canvas", (req, res) => {
     saveTexture(req.body.data)
-        .then((rows) => {
-            if (rows.length > 0) {
+        .then((texture) => {
+            if (texture) {
                 res.json({ success: true });
             } else {
                 res.json({ success: false });

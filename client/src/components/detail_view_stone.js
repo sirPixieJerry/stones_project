@@ -23,7 +23,7 @@ export default function DetailStone() {
 
     const positionStone = [0, 1, 0];
     const colorMaterialStone = "white";
-    const rotationStone = [3, 3, 0]; // -Math.PI / 2, 0, 0
+    const rotationStone = [-Math.PI / 2, 0, 0]; // -Math.PI / 2, 0, 0
     const scaleStone = 2.7;
     const wireframeMaterialStone = false;
     const editmode = false;
@@ -31,11 +31,11 @@ export default function DetailStone() {
 
     // LOAD BASE64 FROM DB-----------------------------------------
     React.useEffect(() => {
-        console.log("REQ TO SERVER!");
+        // console.log("REQ TO SERVER!");
         fetch("/api/load/texture")
             .then((res) => res.json())
             .then((data) => {
-                console.log("DATA CLIENT:", data);
+                // console.log("DATA CLIENT:", data);
                 const { texture_data } = data;
                 setTexture(texture_data);
             });
@@ -62,7 +62,7 @@ export default function DetailStone() {
                         <Drei.BakeShadows />
                         <Drei.Environment preset="city" environment="soft" />
                         <Drei.OrbitControls
-                            autoRotate={false}
+                            autoRotate={true}
                             enableZoom={false}
                         />
                     </Canvas>

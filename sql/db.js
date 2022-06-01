@@ -36,11 +36,16 @@ if (process.env.DATABASE_URL) {
 // TEXTURE_DATA FROM TEXTURE_DATA----------------------------------
 // --> specify later for user_id 🚨
 function loadTexture() {
-    console.log("REQ AT DB!");
+    // console.log("REQ AT DB!");
     return db
-        .query(`SELECT * FROM texture_data`, [])
+        .query(
+            `SELECT * FROM texture_data 
+        ORDER BY created 
+        DESC LIMIT 1`,
+            []
+        )
         .then((result) => {
-            console.log("DB QUERY:", result.rows);
+            // console.log("DB QUERY:", result.rows);
             return result.rows[0];
         })
         .catch((err) => {

@@ -3,6 +3,7 @@
 // ----------------------------------------------------------------
 
 import React from "react"; // --> specify later! 🚨
+import { useNavigate } from "react-router-dom";
 // import "./css/editor.css"; ---> solve later - see index html! 🚨
 import * as Drei from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
@@ -20,7 +21,7 @@ export default function Editor() {
     const [isPainting, setIsPainting] = React.useState(false);
     const [useColor, setUseColor] = React.useState("black");
     const [brushSize, setBrushSize] = React.useState(5);
-    const [error, setError] = React.useState(false); // --> spetup later! 🚨
+    const [error, setError] = React.useState(false); // --> setup later! 🚨
 
     // REFERENCES OF EDITOR.JS COMPONENT---------------------------
     const canvasRef = React.useRef(null);
@@ -105,8 +106,11 @@ export default function Editor() {
     };
 
     // SUBMIT PAINTING---------------------------------------------
+    let navigate = useNavigate();
+
     const submitCanvas = (evt) => {
         evt.preventDefault();
+
         const data = canvasRef.current.toDataURL();
         fetch("/api/submit/canvas", {
             method: "POST",
@@ -119,7 +123,7 @@ export default function Editor() {
                     setError(true);
                 } else {
                     console.log("REDIRECT!");
-                    // location.replace();
+                    navigate("/detail"); // --> fix this! 🚨
                 }
             });
     };
@@ -163,13 +167,24 @@ export default function Editor() {
                 {/* render the colorpicker and brush size */}
                 <CirclePicker className="picker" onChange={handleChangeColor} />
                 <div className="brush-size-container">
-                    <div
-                        className="brush-size"
-                        style={{
-                            width: `${brushSize}px`,
-                            height: `${brushSize}px`,
-                        }}
-                    ></div>
+                    <div className="brush-size-preview">
+                        <div
+                            className="brush-size"
+                            style={{
+                                width: `${brushSize}px`,
+                                height: `${brushSize}px`,
+                            }}
+                        ></div>
+                    </div>
+                    <p>{`${brushSize} px`}</p>
+                    <input
+                        type="range"
+                        min="1"
+                        max="30"
+                        value={brushSize}
+                        onChange={(e) => setBrushSize(e.target.value)}
+                        step="1"
+                    />
                 </div>
             </div>
             <div className="div4">
@@ -193,14 +208,6 @@ export default function Editor() {
                         ></img>
                     </button>
                 </div>
-                <input
-                    type="range"
-                    min="1"
-                    max="30"
-                    value={brushSize}
-                    onChange={(e) => setBrushSize(e.target.value)}
-                    step="1"
-                />
             </div>
             <div className="div5">
                 {/* render submit button */}
