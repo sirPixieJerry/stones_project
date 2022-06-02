@@ -30,4 +30,4 @@ CREATE TABLE texture_data (
      id SERIAL PRIMARY KEY,
      texture_data TEXT,
      created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
+);

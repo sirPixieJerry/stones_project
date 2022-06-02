@@ -10,8 +10,6 @@ const spicedPg = require("spiced-pg");
 
 // INITIALISE ACCESS-----------------------------------------------
 
-const { DB_USER, DB_PASSWORD, DB_NAME } = require("../config.json");
-
 // SELECT ENVIROMENT-----------------------------------------------
 
 let db;
@@ -19,6 +17,7 @@ let db;
 if (process.env.DATABASE_URL) {
     db = spicedPg(process.env.DATABASE_URL); // production
 } else {
+    const { DB_USER, DB_PASSWORD, DB_NAME } = require("../config.json");
     db = spicedPg(
         `postgres:${DB_USER}:${DB_PASSWORD}@localhost:5432/${DB_NAME}`
     ); // development
