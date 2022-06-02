@@ -11,6 +11,8 @@ const secret =
         ? process.env
         : require("../config.json");
 
+// do the same in db.js
+
 // IMPORT QUERIES--------------------------------------------------
 const { saveTexture, loadTexture } = require("../sql/db");
 

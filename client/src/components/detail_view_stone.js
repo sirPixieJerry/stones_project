@@ -77,7 +77,7 @@ export default function DetailStone() {
                 <p>Peter Anderson</p>
                 <p>Oliver Sieweke</p>
                 <p>Alistair Quinn</p>
-                <p>Andres Arias</p>
+                <p>Andrea Arias</p>
                 <p>SPICED ACADEMY</p>
             </div>
         </div>
