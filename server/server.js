@@ -14,7 +14,12 @@ const secret =
 // do the same in db.js
 
 // IMPORT QUERIES--------------------------------------------------
-const { saveTexture, loadTexture } = require("../sql/db");
+const {
+    saveTexture,
+    loadTexture,
+    signUpUser,
+    signInUser,
+} = require("../sql/db");
 
 // ----------------------------------------------------------------
 // SETUP SERVER----------------------------------------------------
@@ -67,15 +72,28 @@ app.use(function (req, res, next) {
 
 // GET SAVED TEXTURE FROM DB---------------------------------------
 app.get("/api/load/texture", (req, res) => {
-    // console.log("REQ FROM APP");
     loadTexture()
-        .then((rows) => {
-            // console.log("ANSWER DB:", rows);
-            return res.json(rows);
-        })
+        .then((rows) => res.json(rows))
         .catch((err) => {
             res.status(400);
             return err;
+        });
+});
+
+// GET USER SIGNIN USER FROM DB------------------------------------
+app.get("/api/signin", (req, res) => {
+    signInUser(req.body)
+        .then((id) => {
+            if (id == null) {
+                res.json({ success: false });
+            } else {
+                req.session.id = id;
+                res.json({ success: true });
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+            res.json({ success: false });
         });
 });
 
@@ -100,6 +118,19 @@ app.post("/api/submit/canvas", (req, res) => {
         .catch((err) => {
             res.status(400);
             return err;
+        });
+});
+
+// POST SIGNUP USER------------------------------------------------
+app.post("/api/signup", (req, res) => {
+    signUpUser(req.body)
+        .then((rows) => {
+            req.session.id = rows.id;
+            res.json({ success: true });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.json({ success: false });
         });
 });
 
