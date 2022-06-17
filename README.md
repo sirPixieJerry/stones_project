@@ -2,14 +2,13 @@
 
 ## Table of Content
 
-[The Story Behind](#the-story-behind)
-[The Idea](#the-idea)
-[The Project](#the-project)
-[Live Demo](#live-demo)
+-   [The Story Behind](#the-story-behind)
+-   [The Idea](#the-idea)
+-   [The Project](#the-project)
+-   [Live Demo](#live-demo)
 
-## The Story Behind
+## The Story Behind <a name="the-story-behind"></a>
 
-<a name="the-story-behind">
 In 2016 I met [Julia Sher](https://de.wikipedia.org/wiki/Julia_Scher) during her exhibition at [Natalia Hug](https://nataliahug.com/) gallery in Cologne. At that time, her work _Warning: Always There_ was on display (see photo).
 
 ![Julia Scher, Warning: Always There](https://64.media.tumblr.com/b22aa2bda21a622f8137eb21cdaa168e/tumblr_o2kbdkcx8q1s7hj73o1_1280.jpg)
