@@ -1,4 +1,4 @@
-# The Stones Project
+# The Stones Project (work in progress)
 
 ## Table of Content
 
