@@ -23,18 +23,16 @@ However, the gallerist forgot to switch on the recorders on that day, but the Po
 
 ![Jerome Daly during the performance Blowing you Kisses for Valentines Day](https://64.media.tumblr.com/0b758ba6a5c60ad7e58220cd42d6db59/tumblr_o2v8holdFz1s7hj73o2_640.jpg)
 
-<a name="the-idea"/>
-## The Idea
+## The Idea <a name="the-idea"></a>
 
 This brought me to the idea to do more performances like that. One of the ideas was to create a website where people can claim 3D models of stones and paint them, that I will later 3D print and deploy at a gallery during an opening.
 
-<a name="the-project"/>
-## The Project
+## The Project <a name="the-project"></a>
 
 For my final project at the SPICED Academy, I remembered this idea and dived into [React-Three-Fiber](https://github.com/pmndrs/react-three-fiber) to create an editor for the stones. In one week, I was able to display the glTF of a Stone and create a connection to a canvas element. The user is able to paint the stone and save the texture to a PostgreSQL database as a base64 code. On the next page, the texture will be loaded from the database and displayed.
 However, user login and all the functionality around a real website where people can share the stones and react to them still needs to be done.
-<a name="live-demo"/>
-Take a look at the [Live Demo](http://stones-project.herokuapp.com/) on _Heroku_.
+
+Take a look at the [Live Demo](http://stones-project.herokuapp.com/) on _Heroku_. <a name="live-demo"></a>
 
 ### DEVELOPER NOTES
 
