@@ -29,15 +29,7 @@ export default function Signup() {
                     type="text"
                     className=""
                     name="first_name"
-                    placeholder="First Name"
-                    required
-                />
-                <input
-                    onChange={handleChange}
-                    type="text"
-                    className=""
-                    name="last_name"
-                    placeholder="Last Name"
+                    placeholder="Your Username"
                     required
                 />
                 <input
@@ -54,14 +46,6 @@ export default function Signup() {
                     className=""
                     name="password"
                     placeholder="Password"
-                    required
-                />
-                <input
-                    onChange={handleChange}
-                    type="password"
-                    className=""
-                    name="confirmPassword"
-                    placeholder="Confirm"
                     required
                 />
                 <button onClick={handleSubmit}>Signup!</button>
