@@ -14,7 +14,7 @@ Well, I went back, but as my Alter Ego _Jerome Daly_ with a heart printed on a b
 
 However, the gallerist forgot to switch on the recorders on that day, but the Polaroids remain with Julia until today (see photo).
 
-![Jerome Daly during the performance Blowing you Kisses for Valentines Day](https://64.media.tumblr.com/0b758ba6a5c60ad7e58220cd42d6db59/tumblr_o2v8holdFz1s7hj73o2_640.jpg)
+![Jerome Daly during the performance Blowing you Kisses for Valentines Day](https://64.media.tumblr.com/0b758ba6a5c60ad7e58220cd42d6db59/tumblr_o2v8holdFz1s7hj73o2_640.jpg | width=300)
 
 ## The Idea
 
