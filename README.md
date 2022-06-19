@@ -11,7 +11,7 @@
 
 In 2016 I met [Julia Sher](https://de.wikipedia.org/wiki/Julia_Scher) during her exhibition at [Natalia Hug](https://nataliahug.com/) gallery in Cologne. At that time, her work _Warning: Always There_ was on display (see photo).
 
-![Julia Scher, Warning: Always There](https://64.media.tumblr.com/b22aa2bda21a622f8137eb21cdaa168e/tumblr_o2kbdkcx8q1s7hj73o1_1280.jpg)
+<img src="https://64.media.tumblr.com/b22aa2bda21a622f8137eb21cdaa168e/tumblr_o2kbdkcx8q1s7hj73o1_1280.jpg" width="300"/>
 
 We spent the evening together, and before we divided, she asked me to do her a favor:
 
