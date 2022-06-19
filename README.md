@@ -5,7 +5,6 @@
 -   [The Project](#the-project)
 -   [Live Demo](#live-demo)
 -   [The Story Behind](#the-story-behind)
--   [The Idea](#the-idea)
 
 ## The Project <a name="the-project"></a>
 
@@ -35,8 +34,6 @@ Well, I went back, but as my Alter Ego _Jerome Daly_ with a heart printed on a b
 However, the gallerist forgot to switch on the recorders on that day, but the Polaroids remain with Julia until today (see photo).
 
 <img src="https://64.media.tumblr.com/39d3a909ecb363678ffdb826d92abd50/tumblr_o2v8holdFz1s7hj73o1_640.jpg" width="250"> <img src="https://64.media.tumblr.com/0b758ba6a5c60ad7e58220cd42d6db59/tumblr_o2v8holdFz1s7hj73o2_640.jpg" width="250"> <img src="https://64.media.tumblr.com/de2929ca54b78f398bf012b6d026690a/tumblr_o2v8holdFz1s7hj73o3_640.jpg" width="250">
-
-## The Idea <a name="the-idea"></a>
 
 This brought me to the idea to do more performances like that. One of the ideas was to create a website where people can claim 3D models of stones and paint them, that I will later 3D print and deploy at a gallery during an opening.
 
