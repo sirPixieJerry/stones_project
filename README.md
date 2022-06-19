@@ -32,13 +32,13 @@ We spent the evening together, and before we divided, she asked me to do her a f
 
 Well, I went back, but as my Alter Ego _Jerome Daly_ with a heart printed on a big transparent to do some... things and a friend to take photos. We didn't inform the gallerist beforehand. So I just went inside, did my thing on that bed, and we took some Polaroids. The _Guerilla Performance_ was born.
 
-However, the gallerist forgot to switch on the recorders on that day, but the Polaroids remain with Julia until today (see photo).
+However, the gallerist forgot to switch on the recorders on that day, but the Polaroids remain with Julia until today (see photos).
 
 <img src="https://64.media.tumblr.com/39d3a909ecb363678ffdb826d92abd50/tumblr_o2v8holdFz1s7hj73o1_640.jpg" width="250"> <img src="https://64.media.tumblr.com/0b758ba6a5c60ad7e58220cd42d6db59/tumblr_o2v8holdFz1s7hj73o2_640.jpg" width="250"> <img src="https://64.media.tumblr.com/de2929ca54b78f398bf012b6d026690a/tumblr_o2v8holdFz1s7hj73o3_640.jpg" width="250">
 
-This brought me to the idea to do more performances like that. One of the ideas was to create a website where people can claim 3D models of stones and paint them, that I will later 3D print and deploy at a gallery during an opening.
+This brought me to the idea to do more performances like that. One of the ideas was to create a website where people can claim 3D models of stones and paint them, that I will later 3D print and deploy at a gallery during an exhibition opening that won't be mine.
 
-#### DEVELOPER ROADMAP: <a name="#developer-roadmap"></a>
+### DEVELOPER ROADMAP: <a name="#developer-roadmap"></a>
 
 -   [x] main functionality to edit mesh texture
 -   [x] store texture to database
@@ -51,6 +51,8 @@ This brought me to the idea to do more performances like that. One of the ideas 
 -   [ ] gallery of all claimed meshes and textures
 -   [ ] feature to comment and react to other users textures
 -   [ ] landing page with explanation of the project
+
+### DEVELOPER NOTES:
 
 #### NOTES WEBPACK CONFIGURATION:
 
