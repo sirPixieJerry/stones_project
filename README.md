@@ -38,7 +38,7 @@ However, the gallerist forgot to switch on the recorders on that day, but the Po
 
 This brought me to the idea to do more performances like that. One of the ideas was to create a website where people can claim 3D models of stones and paint them, that I will later 3D print and deploy at a gallery during an exhibition opening that won't be mine.
 
-### DEVELOPER ROADMAP <a name="#roadmap"></a>
+### DEVELOPER ROADMAP <a name="roadmap"></a>
 
 -   [x] main functionality to edit mesh texture
 -   [x] store texture to database
