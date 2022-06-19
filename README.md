@@ -2,9 +2,10 @@
 
 ## Table of Content
 
--   [The Project](#the-project)
--   [Live Demo](#live-demo)
--   [The Story Behind](#the-story-behind)
+-   [THE PROJECT](#the-project)
+-   [LIVE DEMO](#live-demo)
+-   [THE STORY BEHIND](#the-story-behind)
+-   [DEVELOPER ROADMAP](#developer-roadmap)
 
 ## The Project <a name="the-project"></a>
 
@@ -13,7 +14,7 @@ For my final project at the SPICED Academy, I realized an old idea for a _Gueril
 In general, this web application works as a texture editor for 3D meshes. I picked [React.js](https://reactjs.org/) as a framework because the user should be able to claim a mesh, paint it and store it into a gallery. The user will need a valid email address to claim a mesh, so in the future [AWS](https://aws.amazon.com/) will be involved to realize the email verification. The functionality to react to the painted textures of other users will also be added.
 For now, because the final project was supposed to be finished in 6 days, I decided to start with the main challenge and the main functionality: The feature to edit the texture of the mesh, to save it to a [PostgreSQL](https://www.postgresql.org/) database and load it from there.
 
-To create the [WebGl](https://en.wikipedia.org/wiki/WebGL) elements of the page I decided for a framework called [Three.js](https://threejs.org/), more specific it's adaption for React.js called [React-Three-Fiber](https://github.com/pmndrs/react-three-fiber).
+To create the [WebGL](https://en.wikipedia.org/wiki/WebGL) elements of the page I decided for a framework called [Three.js](https://threejs.org/), more specific it's adaption for React.js called [React-Three-Fiber](https://github.com/pmndrs/react-three-fiber).
 
 To improve the performance of the application, I chose to use [glTF](https://en.wikipedia.org/wiki/GlTF) as the file format of the mesh. The information of a glTF file is stored in JSON format, which allows an easy manipulation of the mesh properties. The mesh itself is stored as a base64 code within the glTF file. The texture is also stored to the database as a base64 PNG to prevent the usage of an external photo bucket and long loading times.
 
@@ -37,23 +38,21 @@ However, the gallerist forgot to switch on the recorders on that day, but the Po
 
 This brought me to the idea to do more performances like that. One of the ideas was to create a website where people can claim 3D models of stones and paint them, that I will later 3D print and deploy at a gallery during an opening.
 
-### DEVELOPER NOTES
+#### DEVELOPER ROADMAP: <a name="#developer-roadmap"></a>
 
-IMPLEMENT NEXT:
+-   [x] main functionality to edit mesh texture
+-   [x] store texture to database
+-   [x] load texture from database
+-   [x] detail view of finished texture
+-   [ ] add more functionality to the editor
+-   [ ] gallery of all available meshes
+-   [ ] feature to claim a mesh
+-   [ ] email verification via AWS
+-   [ ] gallery of all claimed meshes and textures
+-   [ ] feature to comment and react to other users textures
+-   [ ] landing page with explanation of the project
 
--   the functionality claim a stone with a valid email address
--   a gallery of all painted stones
--   maybe the functionality to comment / react to painted stones
-
-NOTES WEBPACK CONFIG:
-
-SECURITY:
-
--   "csurf"
--   "cookie-session"
--   "bcryptjs"
--   "spiced-pg"
--   "uid-safe"
+#### NOTES WEBPACK CONFIGURATION:
 
 DEPRECATED:
 
@@ -71,9 +70,7 @@ NOT NEEDED(?):
 
 USE:
 
--   "mini-css-extract-plugin" - create seperate css files for each component!
-
-DOESN'T WORK! CHECK FOR ALTERNATIVES!
+-   "mini-css-extract-plugin" - create seperate css files for each component! DOESN'T WORK! CHECK FOR ALTERNATIVES!
 
 TEST IF NEEDED:
 
