@@ -7,19 +7,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Editor from "./components/editor";
 import DetailStone from "./components/detail_view_stone";
 import Welcome from "./components/landingpage";
-import Signup from "./components/signup";
-import Signin from "./components/signin";
+// import Signup from "./components/signup";
+// import Signin from "./components/signin";
 
 // ----------------------------------------------------------------
-// APP:JS COMPONENT------------------------------------------------
+// APP.JS COMPONENT------------------------------------------------
 // ----------------------------------------------------------------
 
 export default function App() {
-    // ____________________________________________________________
-    // SETUP-------------------------------------------------------
-
-    // SETUP 3D MODEL----------------------------------------------
-
     // ____________________________________________________________
     // RETURN JSX--------------------------------------------------
     return (
@@ -28,8 +23,8 @@ export default function App() {
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Welcome />}></Route>
-                        <Route path="/signup" element={<Signup />}></Route>
-                        <Route path="/signin" element={<Signin />}></Route>
+                        {/* <Route path="/signup" element={<Signup />}></Route>
+                        <Route path="/signin" element={<Signin />}></Route> */}
                         <Route path="/editor" element={<Editor />}></Route>
                         <Route path="/detail" element={<DetailStone />}></Route>
                     </Routes>

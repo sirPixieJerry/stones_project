@@ -69,16 +69,12 @@ export default function DetailStone() {
                 )}
             </div>
             <div className="div8">
-                <h3>Special Thanks To:</h3>
-                <p>David Friedman</p>
-                <p>Johannes Kronmüller</p>
-                <p>Diego Caponera</p>
-                <p>Merle Fischer</p>
-                <p>Peter Anderson</p>
-                <p>Oliver Sieweke</p>
-                <p>Alistair Quinn</p>
-                <p>Andrea Arias</p>
-                <p>SPICED ACADEMY</p>
+                <h3>Thank you for contributing to the project!</h3>
+                <p>
+                    We will update you via email about further steps of this
+                    project. If you like you can take a look at the stones other
+                    people made.
+                </p>
             </div>
         </div>
     );
